@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Alba 💗</title>
+<style>
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  font-family:Georgia,serif;
+  color:#713c55;
+  background:linear-gradient(135deg,#ffe0ec,#fff5f9,#ffc9df);
+}
+
+.card {
+  width:100%;
+  max-width:520px;
+  padding:35px 25px;
+  text-align:center;
+  background:#ffffffed;
+  border-radius:25px;
+  box-shadow:0 15px 50px #b34b762b;
+}
+
+h1 { color:#d94680; font-size:38px; }
+.heart { font-size:42px; }
+
+p { line-height:1.7; }
+
+input {
+  width:100%;
+  padding:15px;
+  border:2px solid #f4b4ce;
+  border-radius:12px;
+  text-align:center;
+  font-size:17px;
+  outline:none;
+}
+
+button {
+  margin-top:15px;
+  padding:14px 25px;
+  border:0;
+  border-radius:30px;
+  background:#ed6398;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover { background:#d94680; }
+
+.clues {
+  margin-top:25px;
+  padding:18px;
+  background:#fff0f6;
+  border-radius:15px;
+  text-align:left;
+}
+
+.clues h2 {
+  text-align:center;
+  color:#d94680;
+}
+
+.clues p { margin:12px 0; }
+
+#message { color:#d94680; }
+
+#secret {
+  display:none;
+  margin-top:25px;
+  padding:25px 10px;
+  background:#ffe5ef;
+  border-radius:20px;
+}
+
+#secret h2 {
+  color:#e83e83;
+  font-size:clamp(40px,12vw,65px);
+  letter-spacing:3px;
+}
+
+#secret p { font-size:19px; }
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="heart">💗</div>
+
+  <h1>Para Alba</h1>
+
+  <p>
+    He preparado algo especial para ti...<br>
+    Pero antes tendrás que descubrir una contraseña.<br>
+    ¿Serás capaz? ❤️
+  </p>
+
+  <h3>🔐 Introduce la contraseña</h3>
+
+  <input
+    type="password"
+    id="password"
+    placeholder="Tu respuesta..."
+  >
+
+  <br>
+
+  <button onclick="unlock()">
+    Desbloquear mi sorpresa 💕
+  </button>
+
+  <p id="message"></p>
+
+  <div class="clues">
+
+    <h2>🔎 Tus pistas</h2>
+
+    <p>🌸 <b>Pista 1:</b> Es una palabra bonita que describe cómo te veo.</p>
+
+    <p>💗 <b>Pista 2:</b> Es un cumplido que empieza por P.</p>
+
+    <p>✨ <b>Pista 3:</b> Tiene ocho letras y significa que eres muy bonita.</p>
+
+  </div>
+
+  <div id="secret">
+
+    <div class="heart">❤️</div>
+
+    <h2>TE AMO</h2>
+
+    <p>
+      Alba, esta pequeña sorpresa es solo para recordarte
+      lo especial que eres.<br><br>
+      Espero que nunca olvides lo mucho que vales
+      y lo bonita que es tu sonrisa.
+    </p>
+
+    <div style="font-size:30px">💕 💗 💕</div>
+
+  </div>
+
+</div>
+
+<script>
+
+function unlock() {
+
+  const password = document
+    .getElementById("password")
+    .value.trim().toUpperCase();
+
+  if (password === "PRECIOSA") {
+
+    document.getElementById("secret").style.display = "block";
+
+    document.getElementById("message").innerText =
+      "¡Lo has conseguido, Alba! 💗";
+
+    document.getElementById("password").disabled = true;
+
+    document.querySelector("button").disabled = true;
+
+    document.getElementById("secret").scrollIntoView({
+      behavior: "smooth"
+    });
+
+  } else {
+
+    document.getElementById("message").innerText =
+      "Esa no es la contraseña... ¡inténtalo otra vez! 💕";
+
+  }
+
+}
+
+document.getElementById("password").addEventListener(
+  "keydown",
+  function(event) {
+    if (event.key === "Enter") unlock();
+  }
+);
+
+</script>
+
+</body>
+</html>
